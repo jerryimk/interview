@@ -1,0 +1,183 @@
+﻿1.결합방향과 우선순위에 대하여 설명하시오.
+:
+cpu에서 연산기호에 따라 우선순위대로 식을 연산하고
+우선순위가 같을때 대입 혹은 연산의 방향이 적용된다.
+
+2~3.
+ex) 초과 100 미만인가? 를 코딩을 하게 되면?
+    2의 배수 또는 3의 배수? 를 코딩을 하게 되면?
+:
+public class Hello {
+
+	public static void main(String[] args) {
+
+		//1 초과 100 미만인가? 를 코딩을 하게 되면?
+		int num1 = 1;
+		int num2 = 50;
+		boolean result, result2, result3, result4;
+		
+		result = (num1 > 1) && (num1 < 100);
+		result2 = (num2 > 1) && (num2 < 100);
+
+		System.out.println("1 초과 100미만인가? : " + num1 + "은 " + result + "입니다");
+		System.out.println("1 초과 100미만인가? : " + num2 + "은 " + result2 + "입니다");
+		
+		//2의 배수 또는 3의 배수? 를 코딩을 하게 되면?
+		int num3 = 10;
+		int num4 = 23;
+		
+		result3 = (num3 % 2) ==0 || (num3 % 3) ==0;
+		result4 = (num4 % 2) ==0 || (num4 % 3) ==0;
+				
+		System.out.println("2의 배수 또는 3의 배수인가? : " + num3 + "은 " + result3 + "입니다");
+		System.out.println("2의 배수 또는 3의 배수인가? : " + num4 + "은 " + result4 + "입니다");
+	}
+}
+
+4. && 와  || 설명하시오.
+: 둘 다 논리연산자이다. &&는 AND의 개념으로 A와 B가 모두 참일때 true값을 
+리턴하고 ||는 OR의 개념으로 A 또는 B중 하나라도 참일때 true값을 리턴한다.   
+
+5. 아래의 프린트 결과를 예측해 보고, 코딩후 결과를 확인하시오
+class SCE {
+    public static void main(String[] args) {
+        int num1 = 0; 
+        int num2 = 0;
+        boolean result;
+        
+        result = ((num1 += 10) < 0) && ((num2 += 10) > 0);
+        System.out.println("result = " + result); 
+        System.out.println("num1 = " + num1);
+        System.out.println("num2 = " + num2 + '\n');
+		
+        result = ((num1 += 10) > 0) || ((num2 += 10) > 0);
+        System.out.println("result = " + result);
+        System.out.println("num1 = " + num1);
+        System.out.println("num2 = " + num2);
+    }
+}
+
+: result = false
+  num1 = 10
+  num2 = 0
+  
+  result = true
+  num1 = 20
+  num2 = 0
+
+6.아래가 에러가 나는 이유를 설명하고, 수정하시오
+short num1
+short num = -num 
+
+: 2byte 크기의 num이라는 공간만 있고 변수의 초기화가 선언되지 않았다.
+
+short num = 2;
+short num1 = (short)-num; 
+        
+
+7.전위증가 연산자와 후위증가 연산자의 차이는?
+: 
+전위연산(++num),(--num)
+후위연산(num++),(num--)
+
+전위증가는 바로 값을 +1증가 시키고 후위증가는 
+실행코드의 단위가 끝난 후 값을 +1 증가시킨다
+실행에 있어 차이점으로 후위연산자는 값이 증가되는 지점이 
+상황마다 다르기 때문에 주의해야한다.
+
+8.아래의 비트연산자 4가지를 설명하시오.
+-&,^,|,~
+:& 비트단위로 AND연산을 한다. A와 B 모두 만족;
+ | 비트단위로 OR연산을 한다. A 혹은 B를 만족;
+ ^ 비트단위로 XOR연산을 한다. A와 B가 같으면 0, 다르면 1
+ ~ (not의 역할)모든 비트를 반전시켜서 얻은 결과를 리턴 
+
+9.아래의 쉬프트 연산자에 대하여 설명하시오.
+<< , >>
+:
+변수의 2진수 값의 자릿수를 좌우로 한 칸 이동시킨다. 결과적으로,
+<< 왼쪽으로 쉬프트하면 값이 2의 n승 증가
+>> 오른쪽으로 쉬프트하면 값이 2의 n승 감소 
+
+10.전위연산자와 후위연산자에 대하여 설명하시오.
+:
+전위증가는 바로 값을 +1증가 시키고 후위증가는 
+실행코드의 단위가 끝난 후 값을 +1 증가시킨다
+후위연산자의 특징으로는 값이 증가되는 지점이 
+상황마다 다르기 때문에 주의해야한다.
+
+11.아래의 출력값을 예측하시오.
+class AssignSteResult {
+    public static void main(String[] args) {
+        int num1 = 10, num2 = 20, num3 = 30;
+        num1 = num2 = num3;
+
+        /*
+          = 연산자는 결합 방향이 오른쪽에서 왼쪽으로 진행된다. 
+          따라서 위의 문장은 다음과 같다. 
+          num1 = (num2 = num3);        
+        */
+        
+        System.out.println(num1);	
+        System.out.println(num2);
+        System.out.println(num3);
+    }
+}
+
+: 
+30
+30
+30
+
+12.아래의 출력값을 예측하시오.
+class SCE {
+    public static void main(String[] args) {
+        int num1 = 0; 
+        int num2 = 0;
+        boolean result;
+
+        num1 += 10;
+        num2 += 10;        
+        result = (num1 < 0) && (num2 > 0);
+
+        System.out.println("result = " + result);
+        System.out.println("num1 = " + num1);
+        System.out.println("num2 = " + num2 + '\n');
+		
+        num1 += 10;
+        num2 += 10;        
+        result = (num1 > 0) || (num2 > 0);
+
+        System.out.println("result = " + result);
+        System.out.println("num1 = " + num1);
+        System.out.println("num2 = " + num2);
+    }
+}
+
+:
+result = false
+num1 = 10
+num2 = 10
+
+result = true
+num1 = 20
+num2 = 20
+
+13.아래의 출력값을 예측하시오.
+class AddNum {
+    public static void main(String[] args) {
+        int result = 3 + 6;
+        System.out.println("3 + 6 = " + result);
+        
+        result += 9;
+        System.out.println("3 + 6 + 9 = " + result);
+        
+        result += 12;
+        System.out.println("3 + 6 + 9 + 12 = " + result);
+    }
+}
+
+:
+3 + 6 = 9
+3 + 6 + 9 = 18
+3 + 6 + 9 + 12 = 30  
